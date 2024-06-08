@@ -15,12 +15,10 @@ Visit the Minikube installation page for installation instructions https://minik
 * To deploy Kubeflow Pipelines, run the following commands:
 
 
-``
-export PIPELINE_VERSION=2.2.0
-kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
-kubectl wait --for condition=established --timeout=60s crd/applications.app.k8s.io
-kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/platform-agnostic?ref=$PIPELINE_VERSION"
-``
+``export PIPELINE_VERSION=2.2.0``
+``kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"``
+``kubectl wait --for condition=established --timeout=60s crd/applications.app.k8s.io``
+``kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/platform-agnostic?ref=$PIPELINE_VERSION"``
 
 The Kubeflow Pipelines deployment may take several minutes to complete.
  * Verify that the Kubeflow Pipelines UI is accessible by port-forwarding:
