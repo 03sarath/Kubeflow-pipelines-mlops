@@ -1,18 +1,18 @@
 # Install and prepare MicroK8s
 
 ## Install MicroK8s
-sudo snap install microk8s --classic --channel=1.26/stable
+sudo snap install microk8s --channel=1.29-strict/stable
 sudo usermod -a -G microk8s $USER
-newgrp microk8s
+newgrp snap_microk8s
 
 sudo chown -f -R $USER ~/.kube
 
 ## Enable MicroK8s addons
-microk8s enable dns hostpath-storage ingress metallb:10.64.140.43-10.64.140.49 rbac
+sudo microk8s enable dns hostpath-storage metallb:10.64.140.43-10.64.140.49 rbac
 microk8s status
 
 # Install Juju
-sudo snap install juju --classic --channel=3.1/stable
+sudo snap install juju --channel=3.4/stable
 mkdir -p ~/.local/share
 
 ## As a next step we can configure microk8s to work properly with juju by running:
@@ -28,12 +28,8 @@ juju add-model kubeflow
 sudo sysctl fs.inotify.max_user_instances=1280
 sudo sysctl fs.inotify.max_user_watches=655360
 
-## NO worries if No command Found
-fs.inotify.max_user_instances=1280
-fs.inotify.max_user_watches=655360
-
 ## Deploy Charmed Kubeflow
-juju deploy kubeflow --trust  --channel=1.8/stable # You can expect "Deploy of bundle completed." once done with deployment
+juju deploy kubeflow --trust --channel=1.9/stable # You can expect "Deploy of bundle completed." once done with deployment
 
 ## Run any one to check status
 juju status
