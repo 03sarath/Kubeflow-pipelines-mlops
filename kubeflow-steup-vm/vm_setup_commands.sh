@@ -2,10 +2,8 @@
 
 ## Install MicroK8s
 sudo snap install microk8s --channel=1.29-strict/stable
-sudo usermod -a -G microk8s $USER
+sudo usermod -a -G snap_microk8s ubuntu
 newgrp snap_microk8s
-
-sudo chown -f -R $USER ~/.kube
 
 ## Enable MicroK8s addons
 sudo microk8s enable dns hostpath-storage metallb:10.64.140.43-10.64.140.49 rbac
