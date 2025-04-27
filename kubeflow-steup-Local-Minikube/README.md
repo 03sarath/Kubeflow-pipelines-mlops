@@ -27,6 +27,8 @@ The Kubeflow Pipelines deployment may take several minutes to complete.
 
 ``kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8080:80
 ``
+Check your Kubefloe status
+``kubectl get pods -n kubeflow --watch``
 
 * Then, open the Kubeflow Pipelines UI at ``http://localhost:8080/`` or - if you are using kind or K3s within a virtual machine - ``http://{YOUR_VM_IP_ADDRESS}:8080/``
 
